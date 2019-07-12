@@ -32,11 +32,15 @@ class Cl_core{
             //verificar existencia de el metodo
             if(method_exists($this->At_Controladoractual, $url[1])){
                 $this->At_MetodoActual = $url[1];
+                unset($url[1]);
             }
-            
+
+            $this->At_parametros = $url ? array_values($url) : [];
+            // <<print_r($this->At_parametros);            
         }
 
-        print_r($this->At_MetodoActual);
+        call_user_func_array([$this->At_Controladoractual,$this->At_MetodoActual], $this->At_parametros);
+
     }
     
     public function Mt_getUrl(){
