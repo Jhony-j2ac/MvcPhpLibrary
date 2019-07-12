@@ -4,7 +4,7 @@
 class Cl_controlador{
     
     public function modelo($modelo){
-        require_once("../app/modelo/" . $modelo . ".php");
+        require_once("../app/models/" . $modelo . ".php");
         
         return new $modelo;
     }
